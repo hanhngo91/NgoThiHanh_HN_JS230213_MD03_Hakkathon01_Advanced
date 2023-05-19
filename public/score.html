@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .wrapper {
+        width: 100%;
+        margin: 2rem 3rem;
+
+    }
+
+    .table-content {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th {
+        margin: 0 1rem;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        padding: 1rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+
+    }
+
+    .total-field td {
+        padding: 1rem 0;
+        background-color: rgb(0, 132, 255);
+        font-size: 1rem;
+        color: white;
+        font-weight: 600;
+    }
+
+    tr {
+        border-bottom: 1px solid black;
+        padding: 1rem 0;
+    }
+
+    td {
+        padding: .5rem 0;
+    }
+
+    input {
+        width: 90%;
+        height: 100%;
+        text-align: center;
+        margin: .3rem 0;
+        padding: .5rem;
+    }
+
+    .addRound {
+        margin: 1.5rem 0;
+        padding: .5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(0, 132, 255);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .addRound:hover {
+        cursor: pointer;
+        background-color: rgb(0, 102, 198);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <table class="table-content">
+                <thead>
+                    <th>#</th>
+                    <th>Minh Cuong</th>
+                    <th>Thien Phu</th>
+                    <th>Xuan Bach</th>
+                    <th>Manh Hung</th>
+                </thead>
+                <tbody>
+                    <tr class="total-field">
+                        <td>Sum of scores (26)</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Round 1</td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Round 1</td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Round 1</td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                        <td><input type="number"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="addRound">Add round</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
