@@ -73,6 +73,33 @@ server.get("/rounds", (req, res) => {
   }
 });
 
+//Create new round:
+server.post("/score", (req, res) => {
+  try {
+    const { score1, score2, score3, score4 } = req.body;
+    let rounds = JSON.parse(fs.readFileSync("./dev-data/rounds.json"));
+    console.log("Rounds----->");
+    let newRound = {
+      id: rounds.length + 1,
+      score: [score1, score2, score3, score4],
+    };
+    rounds.push(newRound);
+    fs.writeFile("./dev-data/rounds.json", JSON.stringify(rounds), (err) => {
+      if (err) {
+        return res.status(500).send("Something went wrong");
+      } else {
+        return res.status(201).send({
+          status: "success",
+          message: "New round created",
+          data: newRound,
+        });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 server.get("/", (req, res) => {
   console.log("-------->", __dirname);
   res.sendFile(__dirname + "/public/index.html");

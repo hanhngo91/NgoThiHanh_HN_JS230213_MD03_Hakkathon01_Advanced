@@ -37,11 +37,15 @@
 
     }
 
-    .total-field td {
-        padding: 1rem 0;
+    tbody .total-field {
         background-color: rgb(0, 132, 255);
-        font-size: 1rem;
+    }
+
+    .total-field td {
+        background-color: rgb(0, 132, 255);
         color: white;
+        padding: 1rem 0;
+        font-size: 1rem;
         font-weight: 600;
     }
 
@@ -92,9 +96,9 @@
                     <th id="player4">${player.player4}</th> -->
                 </thead>
                 <tbody class="rounds">
-                    <tr class="total-field">
+                    <tr class="total-field" style="background-color: blue;">
                         <!-- <td style="width: 13rem;">Sum of scores (26)</td>
-                        <td>8</td>
+                        <td >8</td>
                         <td>7</td>
                         <td>6</td>
                         <td>5</td> -->

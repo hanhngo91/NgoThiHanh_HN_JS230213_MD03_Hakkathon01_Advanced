@@ -28,7 +28,7 @@ fetch("http://localhost:8000/rounds")
   .then((res) => res.json())
   .then((data) => {
     let rounds = data.data;
-    console.log(rounds);
+    // console.log(rounds);
     let playerSumScore = [];
     for (let i = 0; i < 4; i++) {
       let sum = rounds.reduce((a, b) => a + b.score[i], 0);
@@ -41,13 +41,13 @@ fetch("http://localhost:8000/rounds")
     // console.log(totalScore);
 
     let roundHTML = `
-    <td style="width: 13rem;">Sum of scores (${totalScore})</td>
-    <td>${playerSumScore[0]}</td> 
-    <td>${playerSumScore[1]}</td>
-    <td>${playerSumScore[2]}</td>
-    <td>${playerSumScore[3]}</td>
+    <td style="width: 13rem;background-color: rgb(0, 132, 255); color: white">Sum of scores (${totalScore})</td>
+    <td style="background-color: rgb(0, 132, 255); color: white">${playerSumScore[0]}</td> 
+    <td style="background-color: rgb(0, 132, 255); color: white">${playerSumScore[1]}</td>
+    <td style="background-color: rgb(0, 132, 255); color: white">${playerSumScore[2]}</td>
+    <td style="background-color: rgb(0, 132, 255); color: white">${playerSumScore[3]}</td>
     `;
-    console.log(roundHTML);
+    // console.log(roundHTML);
     totalRow.innerHTML = roundHTML;
 
     rounds.forEach((roundItem) => {
@@ -62,4 +62,46 @@ fetch("http://localhost:8000/rounds")
             `;
     });
     roundDisplay.innerHTML = roundHTML;
-  });
+  })
+  .catch((err) => console.log(err));
+
+//Add more rounds:
+const addRoundBtn = document.querySelector(".addRound");
+addRoundBtn.onclick = () => {
+  //fetch rounds:
+  fetch(
+    "http://localhost:8000/rounds"
+    // {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     id: roundDisplay.rows.length + 1,
+    //     score: [0, 0, 0, 0],
+    //   }),
+    // }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      let rounds = data.data;
+      // console.log(rounds);
+      let newRound = {
+        id: rounds.length + 1,
+        score: [0, 0, 0, 0],
+      };
+      rounds.push(newRound);
+      //Add new row:
+      let newRoundHTML = `
+            <tr>
+                <td>Round ${newRound.id}</td>
+                <td><input type="number" value=${newRound.score[0]}></td>
+                <td><input type="number" value=${newRound.score[1]}></td>
+                <td><input type="number" value=${newRound.score[2]}></td>
+                <td><input type="number" value=${newRound.score[3]}></td>
+            </tr>
+      `;
+      roundDisplay.insertAdjacentHTML("beforeend", newRoundHTML);
+    })
+    .catch((err) => console.log(err));
+};
