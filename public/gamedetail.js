@@ -34,11 +34,15 @@ fetch("http://localhost:8000/rounds")
       let sum = rounds.reduce((a, b) => a + b.score[i], 0);
       playerSumScore.push(sum);
     }
-    console.log(playerSumScore);
+    // console.log(playerSumScore);
+
+    //Caculate total score:
+    let totalScore = playerSumScore.reduce((a, b) => a + b, 0);
+    // console.log(totalScore);
 
     let roundHTML = `
-    <td style="width: 13rem;">Sum of scores (26)</td>
-    <td>${playerSumScore[0]}</td>
+    <td style="width: 13rem;">Sum of scores (${totalScore})</td>
+    <td>${playerSumScore[0]}</td> 
     <td>${playerSumScore[1]}</td>
     <td>${playerSumScore[2]}</td>
     <td>${playerSumScore[3]}</td>
